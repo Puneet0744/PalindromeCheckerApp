@@ -3,15 +3,27 @@ public class PalindromeCheckerApp {
         System.out.println("Welcome to my Palindrome Checker Management System \nVersion : 1.0 \nSystem Initialized Successfully\n");
 
         String str = "racecar";
-        String rev = "";
+        int len = str.length();
+        boolean ans = true;
+        char arr[] = new char[len];
 
-        for (int i=str.length() - 1; i>=0; i--){
-            rev += str.charAt(i);
+        for (int i=0; i<len; i++){
+            arr[i] = str.charAt(i);
         }
 
-        if (str.equals(rev))
-            System.out.println("Your string is a Palindrome");
+        int j=0, k=len-1;
+        while(j<=k){
+            if (arr[j] != arr[k]){
+                ans = false;
+                break;
+            }
+            j++;
+            k--;
+        }
+
+        if (ans)
+            System.out.println("Your string is a palindrome");
         else
-            System.out.println("String is not a Palindrome");
+            System.out.println("String is not a palindrome");
     }
 }
