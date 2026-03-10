@@ -1,22 +1,25 @@
-import java.util.LinkedList;
+
 
 public class PalindromeCheckerApp {
-    public static void main(String[] args){
-        System.out.println("Welcome to my Palindrome Checker Management System \nVersion : 1.0 \nSystem Initialized Successfully\n");
+        static boolean isPalindrome(String str, int left, int right){
 
-        String str = "racecar";
-        boolean ans = true;
-        LinkedList<Character> list = new LinkedList<>();
+            if (left >= right)
+                return true;
 
-        for (int i=0; i<str.length(); i++){
-            list.add(str.charAt(i));
+            if (str.charAt(left) != str.charAt(right))
+                return false;
+
+            return isPalindrome(str, ++left, --right);
         }
 
-        while(list.size() > 1){
-            if (list.removeFirst() != list.removeLast()) ans = false;
-        }
+        public static void main(String[] args){
+            System.out.println("Welcome to my Palindrome Checker Management System \nVersion : 1.0 \nSystem Initialized Successfully\n");
 
-        if (ans) System.out.println("Is a Palindrome");
-        else System.out.println("Is not a Palindrome");
+            String str = "racecar";
+
+            if(isPalindrome(str, 0, str.length()-1))
+                System.out.println("String is a Palindrome");
+            else System.out.println("String is not a palindrome");
+        }
     }
-}
+
