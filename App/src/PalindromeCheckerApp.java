@@ -1,25 +1,25 @@
 
 
 public class PalindromeCheckerApp {
-        static boolean isPalindrome(String str, int left, int right){
+    public static void main(String[] args){
 
-            if (left >= right)
-                return true;
+        String str = "A man a plan a canal Panama";
+        boolean ans = true;
 
-            if (str.charAt(left) != str.charAt(right))
-                return false;
+        str = str.toLowerCase().replace(" ","");
 
-            return isPalindrome(str, ++left, --right);
+        int first = 0;
+        int last = str.length()-1;
+
+        for (int i=0; i<str.length(); i++) {
+            if (str.charAt(first) != str.charAt(last))
+                ans = false;
+
+            first++;
+            last--;
         }
 
-        public static void main(String[] args){
-            System.out.println("Welcome to my Palindrome Checker Management System \nVersion : 1.0 \nSystem Initialized Successfully\n");
-
-            String str = "racecar";
-
-            if(isPalindrome(str, 0, str.length()-1))
-                System.out.println("String is a Palindrome");
-            else System.out.println("String is not a palindrome");
-        }
+        if (ans) System.out.println("Sting is a Palindrome");
+        else System.out.println("String is not a Palindrome");
     }
-
+}
