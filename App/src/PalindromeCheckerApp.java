@@ -1,6 +1,9 @@
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.Queue;
+import java.util.Deque;
+
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
@@ -8,23 +11,21 @@ public class PalindromeCheckerApp {
 
         String str = "racecar";
         boolean ans = true;
-        Stack <Character> sta = new Stack<>();
-        Queue <Character> que = new LinkedList<>();
+       Deque<Character> deque = new ArrayDeque<>();
 
-            for (int i=0; i<str.length(); i++)
-                sta.push(str.charAt(i));
-            for (int i=0; i<str.length(); i++)
-                que.add(str.charAt(i));
+       for (int i =0; i<str.length(); i++){
+           char c = str.charAt(i);
+           deque.add(c);
+       }
 
-            for (int i=0; i<str.length(); i++){
-                if (que.remove() != sta.pop()){
-                    ans = false;
-                    break;
-                }
-            }
-            if (ans)
-                System.out.println("Palindrome");
-            else
-                System.out.println("Not a Palindrome");
+       while (deque.size() > 1){
+           char a = deque.removeFirst();
+           char b = deque.removeLast();
+
+           if(a!=b) ans = false;
+       }
+
+       if (ans) System.out.println("Is a Pallindrome");
+       else System.out.println("Is not a Pallindrome");
     }
 }
