@@ -1,25 +1,30 @@
+import java.util.Stack;
 
+     class PalindromeChecker {
+        public boolean checkPalindrome(String str) {
+            Stack<Character> st = new Stack<>();
+            String str2 = "";
+            for (int i = 0; i < str.length(); i++) {
+                st.push(str.charAt(i));
+            }
 
-public class PalindromeCheckerApp {
-    public static void main(String[] args){
+            while(!st.empty()){
+                str2 = str2 + st.pop();
+            }
 
-        String str = "A man a plan a canal Panama";
-        boolean ans = true;
+            if (!str.equals(str2)) return false;
 
-        str = str.toLowerCase().replace(" ","");
-
-        int first = 0;
-        int last = str.length()-1;
-
-        for (int i=0; i<str.length(); i++) {
-            if (str.charAt(first) != str.charAt(last))
-                ans = false;
-
-            first++;
-            last--;
+            return true;
         }
-
-        if (ans) System.out.println("Sting is a Palindrome");
-        else System.out.println("String is not a Palindrome");
     }
+
+    public class PalindromeCheckerApp {
+        public static void main(String[] args){
+            String str = "racecar";
+            PalindromeChecker checker = new PalindromeChecker();
+            if (checker.checkPalindrome(str))
+                System.out.println("String is a Palindrome");
+            else
+                System.out.println("String is not a palindrome");
+        }
 }
